@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :scraper do
-    url "MyString"
-    content "MyText"
+    url "factory_url"
+    content "factory_content"
   end
 end
