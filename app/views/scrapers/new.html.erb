@@ -1,0 +1,8 @@
+<section>
+  <%= form_tag(controller: :scrapers, action: :create) do %>
+    <%= label_tag :url, "Enter a valid url :" %>
+    <%= text_field_tag :url %>
+    <%= submit_tag "Scrap it!" %>
+  <% end %>
+</section>
+<h1><%= @scraper.content %></h1>

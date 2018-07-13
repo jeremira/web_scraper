@@ -5,11 +5,12 @@ class Scraper < ApplicationRecord
   # Refresh content if older than the time limit
   # Return the content
   def updated_content
+    # Setup timestamp for new record
+    self.updated_at = self.updated_at || Time.zone.now
     if self.updated_at < update_time_limit
       #update content with scrawler
       begin
         self.content = WebCrawler.new(self.url).get_webpage
-        self.save
         self.content
       rescue
         self.content
