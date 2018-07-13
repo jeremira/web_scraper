@@ -7,7 +7,13 @@ class Scraper < ApplicationRecord
   def updated_content
     if self.updated_at < update_time_limit
       #update content with scrawler
-      self.content = "updated_content"
+      begin
+        self.content = WebCrawler.new(self.url).get_webpage
+        self.save
+        self.content
+      rescue
+        self.content
+      end
     else
       self.content
     end

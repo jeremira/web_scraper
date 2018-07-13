@@ -12,6 +12,8 @@ RSpec.describe Scraper, type: :model do
   end
 
   describe "#updated_content" do
+    before(:each) {allow_any_instance_of(WebCrawler).to receive(:get_webpage).and_return("updated_content")}
+    
     context "Last update : 4 minutes ago" do
       it "return same content" do
         scraper.updated_at = Time.zone.now - 4*60
