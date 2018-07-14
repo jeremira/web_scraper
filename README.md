@@ -1,34 +1,3 @@
-s## Écrire une application Rails
-
-Test pour les routes
-  resources : scraper
-Routes : root_page => new
-            create update show
-        /pages => index
-
-Model :
- Scraper
-  web_url uniq
-  content
-  last_updated_at
-
-Method to overwrite content : update content si moins de 5min sinon super
-default 404 content
-
-
-Controller :
-  new : classic stuff, url required
-  create : find or create : open modal with show content
-                unic broken error
-                update content and save
-  index : list all page AZ + expiration date + link to open modal
-
-Views
-
-Add menu Home | Pages
-
-Update readme doc
-
 Une page root ('/') avec un formulaire pour entrer une url
 (exemple: http://ogust-self-service.com/). Suite à la soumission du formulaire :
 

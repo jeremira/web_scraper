@@ -5,4 +5,10 @@
     <%= submit_tag "Scrap it!" %>
   <% end %>
 </section>
-<h1><%= @scraper.content %></h1>
+<section>
+  <div class="embed-responsive embed-responsive-16by9">
+    <% if @scraper.id %>
+      <iframe class="embed-responsive-item" src="<%= scraper_path(@scraper.id) %>"></iframe>
+    <% end %>
+  </div>
+</section>

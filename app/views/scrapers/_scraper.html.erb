@@ -1,0 +1,6 @@
+<div>
+  <p>Url : <%= scraper.url %></p>
+  <p>Expire at : <%= scraper.updated_at + 5*60 %></p>
+  <p><%= link_to 'See content', new_scraper_path(id: scraper.id) %></p>
+</div>
+<hr>

@@ -1,7 +1,7 @@
 class WebCrawler
   # Will get content from an web page
 
-  require 'openssl'
+  require 'open-uri'
 
   attr_accessor :url
   attr_reader :content
@@ -14,7 +14,7 @@ class WebCrawler
 
   def get_webpage(url =@url)
     begin
-      @content = Nokogiri::HTML(open(url.to_s)).at('body').inner_html
+      @content = Nokogiri::HTML(open(url.to_s)).to_html
     rescue
       @content = "Could not fetch this webpage : #{url}."
     end

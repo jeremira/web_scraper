@@ -13,23 +13,26 @@ RSpec.describe Scraper, type: :model do
 
   describe "#updated_content" do
     before(:each) {allow_any_instance_of(WebCrawler).to receive(:get_webpage).and_return("updated_content")}
-    
+
     context "Last update : 4 minutes ago" do
       it "return same content" do
         scraper.updated_at = Time.zone.now - 4*60
-        expect(scraper.updated_content).to eq "factory_content"
+        scraper.updated_content
+        expect(scraper.content).to eq "factory_content"
       end
     end
     context "Last update : 5 minutes ago" do
       it "return an updated content" do
         scraper.updated_at = Time.zone.now - 5*60
-        expect(scraper.updated_content).to eq "updated_content"
+        scraper.updated_content
+        expect(scraper.content).to eq "updated_content"
       end
     end
     context "Last update : 6 minutes ago" do
       it "return an updated content" do
         scraper.updated_at = Time.zone.now - 6*60
-        expect(scraper.updated_content).to eq "updated_content"
+        scraper.updated_content
+        expect(scraper.content).to eq "updated_content"
       end
     end
   end

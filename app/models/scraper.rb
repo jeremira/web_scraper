@@ -5,12 +5,12 @@ class Scraper < ApplicationRecord
   # Refresh content if older than the time limit
   # Return the content
   def updated_content
-    # Setup timestamp for new record
-    self.updated_at = self.updated_at || Time.zone.now
-    if self.updated_at < update_time_limit
+    if !self.content || self.updated_at < expiration_time
       #update content with scrawler
       begin
-        self.content = WebCrawler.new(self.url).get_webpage
+        crawler = WebCrawler.new(self.url)
+        self.content = crawler.get_webpage
+        self.save
         self.content
       rescue
         self.content
@@ -22,8 +22,8 @@ class Scraper < ApplicationRecord
 
   private
 
-  def update_time_limit
-    # 5minutes limit
+  def expiration_time
+    # 5 minutes limit
     Time.zone.now - 5*60
   end
 
