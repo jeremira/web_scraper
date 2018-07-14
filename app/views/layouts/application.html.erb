@@ -9,6 +9,10 @@
   </head>
 
   <body>
+    <nav>
+      <%= link_to 'Enter an url', new_scraper_path %>
+      <%= link_to 'Index', scrapers_path %>
+    </nav>
     <span class="label label-success"><%= flash[:notice] %></span>
     <span class="label label-warning"><%= flash[:alert] %></span>
     <%= yield %>
